@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Email Generator</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main Container Styling */
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 50px;
+            min-height: 100vh;
+        }
+
+        /* Form Container */
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            transform-origin: top left;
+        }
+
+        .form-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Email Display Container */
+        .email-container {
+            background-color: #edf2f7;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .email-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Title Styling */
+        h1 {
+            color: #1f4d90;
+            font-size: 2.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #2d6db1;
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Label Styling */
+        label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            color: #455a64;
+            margin-bottom: 8px;
+        }
+
+        /* Input and Textarea Styling */
+        input, textarea {
+            padding: 12px;
+            border: 1px solid #d6d9e0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            width: 100%;
+            background-color: #f0f4f8;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #1f4d90;
+            outline: none;
+            box-shadow: 0 0 5px rgba(31, 77, 144, 0.2);
+            background-color: #ffffff;
+        }
+
+        /* Submit Button Styling */
+        input[type="submit"], button {
+            background-color: #1f4d90;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #163d73;
+            transform: translateY(-3px);
+        }
+
+        /* Generated Email Styling */
+        #generatedEmail {
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #d6d9e0;
+            text-align: justify;
+            white-space: pre-line;
+            font-size: 1.25rem;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Hover Effect for Generated Email */
+        #generatedEmail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Button Group Styling */
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-small {
+            padding: 12px;
+            width: 48%;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-small:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .form-container, .email-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            input, textarea {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Application Email Generator</h1>
+    <div class="main-container">
+        <div class="form-container">
+            <h2>Fill the Details</h2>
+            <form id="jobApplicationForm">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required>
+
+                <label for="linkedinProfile">LinkedIn Profile URL</label>
+                <input type="url" id="linkedinProfile" name="linkedinProfile" required>
+
+                <label for="githubProfile">GitHub Profile URL</label>
+                <input type="url" id="githubProfile" name="githubProfile">
+
+                <label for="previousExperience">Previous Experience</label>
+                <textarea id="previousExperience" name="previousExperience" required></textarea>
+
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" required></textarea>
+
+                <label for="interestReason">Reason for Interest in the Company</label>
+                <textarea id="interestReason" name="interestReason" required></textarea>
+
+                <label for="jobDescription">Job Description</label>
+                <textarea id="jobDescription" name="jobDescription" required></textarea>
+
+                <label for="companyName">Company Name</label>
+                <input type="text" id="companyName" name="companyName" required>
+
+                <label for="companyEmail">Company Email</label>
+                <input type="email" id="companyEmail" name="companyEmail" required>
+
+                <input type="submit" value="Generate Email">
+            </form>
+        </div>
+
+        <div class="email-container">
+            <h2>Generated Email</h2>
+            <div id="generatedEmail">
+                <!-- The generated email will be displayed here -->
+            </div>
+
+            <div class="btn-group">
+                <button id="copyButton" class="btn-small">Copy Email</button>
+                <button id="sendButton" class="btn-small">Send to Company</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("jobApplicationForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formObject = Object.fromEntries(formData.entries());
+
+            const response = await fetch('/generate-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formObject),
+            });
+
+            const result = await response.json();
+            document.getElementById('generatedEmail').innerHTML = result.email;
+        });
+
+        document.getElementById("copyButton").addEventListener("click", function() {
+            const generatedEmailText = document.getElementById("generatedEmail").innerText;
+            navigator.clipboard.writeText(generatedEmailText).then(() => {
+                alert("Email copied to clipboard!");
+            });
+        });
+
+        document.getElementById("sendButton").addEventListener("click", function() {
+            const companyEmail = document.getElementById('companyEmail').value;
+            const companyName = document.getElementById('companyName').value;
+            const subject = `Job Application for ${companyName}`;
+            const body = document.getElementById('generatedEmail').innerText;
+
+            const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(companyEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            window.open(mailtoLink, '_blank');
+        });
+    </script>
+</body>
+</html>
