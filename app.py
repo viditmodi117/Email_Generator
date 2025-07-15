@@ -50,7 +50,7 @@ def generate_email():
 
     # Generate the email using the Groq client and llama3-groq-70b-8192-tool-use-preview model
     completion = client.chat.completions.create(
-        model="llama3-groq-70b-8192-tool-use-preview",
+        model="llama-3.3-70b-versatile",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.83,
         max_tokens=1200,
